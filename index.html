@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daniel Beltrán · Asesor Inmobiliario Granada</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #0c0b08;
+    color: #f0ece2;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+  }
+
+  .grain {
+    position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: 0.4;
+  }
+
+  .wrap { max-width: 680px; margin: 0 auto; padding: 0 28px; position: relative; z-index: 1; }
+
+  .hero {
+    padding: 80px 0 60px;
+    border-bottom: 1px solid rgba(240,236,226,0.1);
+  }
+
+  .badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(240,236,226,0.06);
+    border: 1px solid rgba(240,236,226,0.15);
+    border-radius: 100px;
+    padding: 6px 14px;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #c9b88a;
+    margin-bottom: 36px;
+  }
+
+  .badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: #c9b88a;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 8vw, 58px);
+    font-weight: 900;
+    line-height: 1.1;
+    color: #f0ece2;
+    margin-bottom: 12px;
+  }
+
+  h1 .accent { color: #c9b88a; }
+
+  .sub {
+    font-size: 17px;
+    color: rgba(240,236,226,0.55);
+    max-width: 440px;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    margin-top: 16px;
+  }
+
+  .problems {
+    display: flex; flex-direction: column; gap: 10px;
+    margin-bottom: 40px;
+  }
+
+  .problem-item {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 15px;
+    color: rgba(240,236,226,0.7);
+  }
+
+  .problem-item::before {
+    content: '';
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    background: rgba(201,184,138,0.12);
+    border: 1px solid rgba(201,184,138,0.3);
+    flex-shrink: 0;
+  }
+
+  .cta-primary {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: #c9b88a;
+    color: #0c0b08;
+    text-decoration: none;
+    padding: 16px 28px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .cta-primary:hover { background: #ddd0a8; transform: translateY(-1px); }
+
+  .cta-primary svg { width: 16px; height: 16px; }
+
+  .section {
+    padding: 60px 0;
+    border-bottom: 1px solid rgba(240,236,226,0.08);
+  }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #c9b88a;
+    margin-bottom: 24px;
+  }
+
+  .big-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(22px, 5vw, 32px);
+    font-weight: 700;
+    color: #f0ece2;
+    line-height: 1.3;
+    margin-bottom: 20px;
+  }
+
+  .body-text {
+    font-size: 16px;
+    color: rgba(240,236,226,0.6);
+    line-height: 1.75;
+  }
+
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1px;
+    background: rgba(240,236,226,0.08);
+    border: 1px solid rgba(240,236,226,0.08);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 32px;
+  }
+
+  .pillar {
+    background: #0c0b08;
+    padding: 28px 24px;
+  }
+
+  .pillar-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 40px;
+    font-weight: 900;
+    color: rgba(201,184,138,0.2);
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+
+  .pillar-title {
+    font-size: 15px;
+    font-weight: 500;
+    color: #f0ece2;
+    margin-bottom: 8px;
+  }
+
+  .pillar-text {
+    font-size: 13px;
+    color: rgba(240,236,226,0.45);
+    line-height: 1.5;
+  }
+
+  .excl-box {
+    background: rgba(201,184,138,0.06);
+    border: 1px solid rgba(201,184,138,0.2);
+    border-radius: 8px;
+    padding: 36px 32px;
+    margin-top: 32px;
+  }
+
+  .excl-box p {
+    font-size: 16px;
+    color: rgba(240,236,226,0.75);
+    line-height: 1.7;
+    margin-bottom: 10px;
+  }
+
+  .excl-box p:last-child { margin-bottom: 0; }
+
+  .excl-box strong { color: #f0ece2; font-weight: 500; }
+
+  .final-cta {
+    padding: 72px 0 80px;
+    text-align: center;
+  }
+
+  .final-cta h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 6vw, 44px);
+    font-weight: 900;
+    color: #f0ece2;
+    margin-bottom: 16px;
+  }
+
+  .final-cta p {
+    font-size: 15px;
+    color: rgba(240,236,226,0.5);
+    margin-bottom: 36px;
+  }
+
+  .cta-secondary {
+    display: inline-flex; align-items: center; gap: 10px;
+    border: 1px solid rgba(201,184,138,0.4);
+    color: #c9b88a;
+    text-decoration: none;
+    padding: 16px 28px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  .cta-secondary:hover {
+    background: rgba(201,184,138,0.08);
+    border-color: rgba(201,184,138,0.7);
+  }
+
+  footer {
+    border-top: 1px solid rgba(240,236,226,0.07);
+    padding: 24px 0;
+    text-align: center;
+    font-size: 12px;
+    color: rgba(240,236,226,0.2);
+  }
+
+  .name-tag {
+    font-size: 13px;
+    color: rgba(240,236,226,0.35);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+</style>
+</head>
+<body>
+
+<div class="grain"></div>
+
+<div class="wrap">
+  <div class="hero">
+    <div class="name-tag">Daniel Beltrán · Asesor Inmobiliario · Granada</div>
+    <div class="badge">Solo para propietarios que quieren vender de verdad</div>
+    <h1>El 90% vende<br>mal su casa.<br><span class="accent">Evítalo.</span></h1>
+    <p class="sub">La mayoría pierde dinero antes de recibir la primera oferta. Y ni siquiera lo sabe.</p>
+    <div class="problems">
+      <div class="problem-item">Compiten con decenas de opciones similares sin destacar</div>
+      <div class="problem-item">Salen al mercado sin estrategia ni posicionamiento</div>
+      <div class="problem-item">Empiezan a bajar el precio cuando ya es tarde</div>
+    </div>
+    <a href="https://wa.link/n7sqmw" class="cta-primary">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+      Quiero evitar perder dinero
+    </a>
+  </div>
+
+  <div class="section">
+    <div class="section-label">La verdad</div>
+    <div class="big-quote">No es mala suerte.<br>Es un mal inicio.</div>
+    <p class="body-text">Trabajo cada día con propietarios que llegan tarde: sin estrategia, mal posicionados, con el precio ya deteriorado. El error no está en el mercado, está en cómo se sale a él.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Qué marca la diferencia</div>
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pillar-num">01</div>
+        <div class="pillar-title">Salir bien al mercado</div>
+        <div class="pillar-text">El primer impacto lo es todo. Se trabaja antes de publicar.</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">02</div>
+        <div class="pillar-title">Posicionamiento real</div>
+        <div class="pillar-text">Tu vivienda destacada desde el minuto uno frente al resto.</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">03</div>
+        <div class="pillar-title">Control de la negociación</div>
+        <div class="pillar-text">Ahí es donde se gana o se pierde dinero de verdad.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">No trabajo con todo el mundo</div>
+    <div class="excl-box">
+      <p><strong>Solo con propietarios que realmente quieren vender.</strong></p>
+      <p>Si solo estás probando, o no tienes urgencia, esto no es para ti. Mi tiempo y atención son limitados.</p>
+      <p>Respuesta rápida. Sin compromiso. Sin rodeos.</p>
+    </div>
+  </div>
+
+  <div class="final-cta">
+    <h2>¿Listo para vender bien?</h2>
+    <p>Escríbeme hoy y hablamos sin compromiso.</p>
+    <a href="https://wa.link/gef7y0" class="cta-secondary">Escríbeme → Vender</a>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">© Daniel Beltrán · Asesor Inmobiliario Granada</div>
+</footer>
+
+</body>
+</html>
